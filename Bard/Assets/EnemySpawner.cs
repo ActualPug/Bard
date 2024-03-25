@@ -11,18 +11,24 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Sprite fireElementalSprite;
     [Tooltip("X and Y are spawn position, Z is the weight of that spawn occuring.")]
     [SerializeField] private List<Vector3> spawnLocations;
+    [Tooltip("The lower this number, the harder the game will get when difficulty is increased.")]
+    [SerializeField] float difficultyModifier = 0.5f;
+    [Tooltip("The amount of seconds to pass before difficulty is increased.")]
+    [SerializeField] float difficultyFrequency = 15f;
+    float waitTimeInSeconds = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
         SpawnEnemies();
+        ModifyDifficulty();
     }
 
     void SpawnEnemies() {
         StartCoroutine(SpawnEnemiesRoutine());
         IEnumerator SpawnEnemiesRoutine() {
             while(true) {
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(waitTimeInSeconds);
                 SpawnEnemyRandom();
             }
         }
@@ -56,5 +62,16 @@ public class EnemySpawner : MonoBehaviour
         }
 
         throw new InvalidOperationException();
+    }
+
+    void ModifyDifficulty() {
+        StartCoroutine(ModifyDifficultyRoutine());
+        IEnumerator ModifyDifficultyRoutine() {
+            while(Time.timeScale != 0) {
+                yield return new WaitForSeconds(difficultyFrequency);
+                waitTimeInSeconds *= difficultyModifier;
+                Debug.Log("Increased difficulty");
+            }
+        }
     }
 }

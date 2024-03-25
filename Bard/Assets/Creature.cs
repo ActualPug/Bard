@@ -6,7 +6,7 @@ public class Creature : MonoBehaviour
 {
     [Header("Stats")]
     public float speed = 0f;
-    [SerializeField] int health = 3;
+    [SerializeField] public int health = 3;
 
     [Header("Flavor")]
     public GameObject body;
