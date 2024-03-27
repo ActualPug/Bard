@@ -14,7 +14,6 @@ public class Creature : MonoBehaviour
 
     [Header("Tracked Data")]
     [SerializeField] Vector3 homePosition = Vector3.zero;
-    [SerializeField] CreatureSO creatureSO;
 
     Rigidbody2D rb;
 
@@ -25,9 +24,7 @@ public class Creature : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(creatureSO != null){
-            creatureSO.health = health;
-        }
+        
     }
 
     public void MoveCreature(Vector3 direction)

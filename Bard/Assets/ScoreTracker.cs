@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreTracker : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI gameOverText;
-    [SerializeField] private TextMeshProUGUI finalScoreText;
-    [SerializeField] MusicBox musicBox;
-    int score = 0;
-    bool finalScoreUpdated = false;
+    [SerializeField] Bard bard;
+    public int score = 0;
     
     // Start is called before the first frame update
     void Awake()
@@ -19,24 +17,12 @@ public class ScoreTracker : MonoBehaviour
         StartTracking();
     }
 
-    void Update() {
-        if (Time.timeScale == 0 && !finalScoreUpdated) {
-            Debug.Log("Time scale is 0");
-            scoreText.enabled = false;
-            gameOverText.enabled = true;
-            finalScoreText.text = "Final score: " + score.ToString();
-            finalScoreText.enabled = true;
-            finalScoreUpdated = true;
-            musicBox.GetComponent<AudioSource>().Stop();
-        }
-    }
-
     void StartTracking() {
         StartCoroutine(StartTrackingRoutine());
     }
 
     IEnumerator StartTrackingRoutine() {
-        while(true) {
+        while(!bard.gameOver) {
             yield return new WaitForSeconds(0.1f);
             score += 10;
             scoreText.text = score.ToString();

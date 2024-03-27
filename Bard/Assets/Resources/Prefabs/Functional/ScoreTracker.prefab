@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2690483512743335528}
   - component: {fileID: 2765544190301589364}
+  - component: {fileID: 2739494488284135748}
+  - component: {fileID: 128909809366858688}
   m_Layer: 0
   m_Name: ScoreTracker
   m_TagString: Untagged
@@ -45,6 +47,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
+  bard: {fileID: 0}
+  score: 0
+--- !u!114 &2739494488284135748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3067506751779985441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17969448515bfa74986cce3fe810aae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bard: {fileID: 0}
+  gameManager: {fileID: 3067506751779985441}
+  musicBox: {fileID: 0}
+  scoreText: {fileID: 0}
   gameOverText: {fileID: 0}
   finalScoreText: {fileID: 0}
-  musicBox: {fileID: 0}
+  playAgainButton: {fileID: 0}
+  mainMenuButton: {fileID: 0}
+--- !u!114 &128909809366858688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3067506751779985441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f51700d035383498e3a7fad2b4d6f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenFader: {fileID: 0}

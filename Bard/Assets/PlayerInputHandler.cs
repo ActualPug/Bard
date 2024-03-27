@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    [SerializeField] GameObject bard;
     [SerializeField] Creature playerCreature;
     ProjectileThrower projectileThrower;
     // Start is called before the first frame update
@@ -39,6 +40,8 @@ public class PlayerInputHandler : MonoBehaviour
             projectileThrower.Launch(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
 
-        playerCreature.MoveCreature(input);
+        if (bard.activeSelf) {
+            playerCreature.MoveCreature(input);
+        }
     }
 }

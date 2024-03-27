@@ -10,7 +10,7 @@ public class FireElemental : MonoBehaviour
             Death();
         } else if (other.gameObject.tag == "Player") {
             Death();
-            other.GetComponent<Creature>().health -= 1;
+            other.GetComponent<Bard>().TakeDamage(1);
         }
     }
 

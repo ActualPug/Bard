@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] Creature bardCreature;
+    [SerializeField] Bard bard;
     [SerializeField] GameObject fireElementalPrefab;
     [SerializeField] Sprite fireElementalSprite;
     [Tooltip("X and Y are spawn position, Z is the weight of that spawn occuring.")]
@@ -27,9 +28,11 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemies() {
         StartCoroutine(SpawnEnemiesRoutine());
         IEnumerator SpawnEnemiesRoutine() {
-            while(true) {
+            while(!bard.gameOver) {
                 yield return new WaitForSeconds(waitTimeInSeconds);
-                SpawnEnemyRandom();
+                if (!bard.gameOver) {
+                    SpawnEnemyRandom();
+                }
             }
         }
     }
@@ -67,10 +70,12 @@ public class EnemySpawner : MonoBehaviour
     void ModifyDifficulty() {
         StartCoroutine(ModifyDifficultyRoutine());
         IEnumerator ModifyDifficultyRoutine() {
-            while(Time.timeScale != 0) {
+            while(!bard.gameOver) {
                 yield return new WaitForSeconds(difficultyFrequency);
-                waitTimeInSeconds *= difficultyModifier;
-                Debug.Log("Increased difficulty");
+                if(!bard.gameOver) {
+                    waitTimeInSeconds *= difficultyModifier;
+                    Debug.Log("Increased difficulty");
+                }
             }
         }
     }

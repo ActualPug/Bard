@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bard : MonoBehaviour
 {
     [SerializeField] Creature bardCreature;
-    bool gamePaused = false;
+    public bool gameOver = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,17 +15,21 @@ public class Bard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(bardCreature.health <= 0 && !gamePaused) {
-            Death();
+
+    }
+
+    public void TakeDamage(int damage) {
+        for(int i = 0; i < damage; i++) {
+            bardCreature.health -= 1;
+            this.GetComponent<HealthTracker>().ReduceHealth();
+            if(bardCreature.health <= 0 ) {
+                Death();
+                return;
+            }
         }
     }
 
     void Death() {
-        PauseGame();
-    }
-
-    void PauseGame() {
-        Time.timeScale = 0;
-        gamePaused = true;
+        gameOver = true;
     }
 }
