@@ -6,6 +6,7 @@ public class HealthTracker : MonoBehaviour
 {
     [SerializeField] Creature bardCreature;
     [SerializeField] GameObject heartIconPrefab;
+    [SerializeField] GameObject canvasUI;
     List<GameObject> heartIcons = new List<GameObject>();
     int BardHealth;
     // Start is called before the first frame update
@@ -31,16 +32,20 @@ public class HealthTracker : MonoBehaviour
     void InitializeHeartIcons() {
         GameObject newObject;
         int numHearts = bardCreature.health / 2;
-        float xPosition = 21.5f;
+        float xPosition = 850;
         for (int i = 0; i < numHearts; i++) {
-            newObject = Instantiate(heartIconPrefab, new Vector3(xPosition, 11.5f, 1), Quaternion.identity);
-            xPosition -= 2;
+            newObject = Instantiate(heartIconPrefab, new Vector3(xPosition, 0, 1), Quaternion.identity);
+            newObject.transform.SetParent(canvasUI.transform);
+            newObject.transform.localPosition = new Vector3(xPosition, 450, 1);
+            xPosition -= 150;
             heartIcons.Add(newObject);
         }
 
         if (bardCreature.health % 2 != 0) {
-            newObject = Instantiate(heartIconPrefab, new Vector3(xPosition, 11.5f, 1), Quaternion.identity);
+            newObject = Instantiate(heartIconPrefab, new Vector3(xPosition, 0, 1), Quaternion.identity);
             newObject.GetComponent<HeartIcon>().ChangeHeartToHalf();
+            newObject.transform.SetParent(canvasUI.transform);
+            newObject.transform.localPosition = new Vector3(xPosition, 450, 1);
             heartIcons.Add(newObject);
         }
     }

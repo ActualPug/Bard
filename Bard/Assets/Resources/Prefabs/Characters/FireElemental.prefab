@@ -56,7 +56,6 @@ MonoBehaviour:
   animationStateChangers:
   - {fileID: 3926137183007730321}
   homePosition: {x: 0, y: 0, z: 0}
-  creatureSO: {fileID: 11400000, guid: f20ba77b662153d40a2502226cf520bf, type: 2}
 --- !u!50 &5462214822192271045
 Rigidbody2D:
   serializedVersion: 4
@@ -116,8 +115,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.93534565, y: 0.93534565}
+  m_Offset: {x: 0, y: -0.12}
+  m_Size: {x: 0.78, y: 0.48344612}
   m_Direction: 0
 --- !u!114 &1468449711223513856
 MonoBehaviour:
@@ -324,12 +323,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 23cdbde0c24289745b8c72cee79e5e78, type: 3}
+  m_Sprite: {fileID: 1915216183, guid: 218b25386c71dcf4d976d26814dbe7da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -343,7 +342,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8114901303185266854}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e6012ce15c8c1544898eb705e325fd50, type: 2}
   m_CullingMode: 0
@@ -363,7 +362,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8114901303185266854}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e51810c1f1c384346af7830b13051432, type: 3}
   m_Name: 

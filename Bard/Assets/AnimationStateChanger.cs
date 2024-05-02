@@ -19,7 +19,7 @@ public class AnimationStateChanger : MonoBehaviour
         
     }
 
-    public void ChangeAnimationState(string newState, float speed = 3) {
+    public void ChangeAnimationState(string newState, float speed = 1) {
         animator.speed = speed;
 
         if(currentState == newState) {
