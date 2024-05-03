@@ -9,20 +9,20 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Creature bardCreature;
     [SerializeField] Bard bard;
     [SerializeField] GameObject fireElementalPrefab;
-    [SerializeField] Sprite fireElementalSprite;
     [Tooltip("X and Y are spawn position, Z is the weight of that spawn occuring.")]
     [SerializeField] private List<Vector3> spawnLocations;
-    [Tooltip("The lower this number, the harder the game will get when difficulty is increased.")]
+    /*[Tooltip("The lower this number, the harder the game will get when difficulty is increased.")]
     [SerializeField] float difficultyModifier = 0.5f;
     [Tooltip("The amount of seconds to pass before difficulty is increased.")]
-    [SerializeField] float difficultyFrequency = 15f;
-    float waitTimeInSeconds = 1f;
+    [SerializeField] float difficultyFrequency = 15f;*/
+    [Tooltip("The time in seconds between enemy spawns")]
+    [SerializeField] float waitTimeInSeconds = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
         SpawnEnemies();
-        ModifyDifficulty();
+        //ModifyDifficulty();
     }
 
     void SpawnEnemies() {
@@ -67,7 +67,7 @@ public class EnemySpawner : MonoBehaviour
         throw new InvalidOperationException();
     }
 
-    void ModifyDifficulty() {
+    /*void ModifyDifficulty() {
         StartCoroutine(ModifyDifficultyRoutine());
         IEnumerator ModifyDifficultyRoutine() {
             while(!bard.gameOver) {
@@ -78,5 +78,5 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 }

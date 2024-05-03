@@ -9,7 +9,9 @@ public class ScoreTracker : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] Bard bard;
-    public int score = 0;
+    [SerializeField] public int scoreToWin = 1;
+    [SerializeField] public int score = 0;
+
     
     // Start is called before the first frame update
     void Awake()
