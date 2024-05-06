@@ -23,7 +23,10 @@ public class OptionsMenu : MonoBehaviour
     [Header("Postprocessing")]
     [SerializeField] Toggle vsyncToggle;
 
+    [Header("Others")]
     [SerializeField] Canvas optionsCanvas;
+    [SerializeField] AudioSource musicAudioSource;
+    [SerializeField] AudioSource sfxAudioSource;
 
     void Awake() {
         // first time playing game set default preferences
@@ -54,7 +57,7 @@ public class OptionsMenu : MonoBehaviour
         musicVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
         GetResolutionOptions();
         resDropdown.value = PlayerPrefs.GetInt("ResolutionIndex");
-        if (PlayerPrefs.GetInt("FullscreenToggled") == 1) {
+        if (PlayerPrefs.GetInt("FullscreenEnabled") == 1) {
             fullscreenToggle.isOn = true;
         }
         else {
@@ -91,6 +94,26 @@ public class OptionsMenu : MonoBehaviour
 
     float ConvertToDb(float sliderValue) {
         return Mathf.Log10(Mathf.Max(sliderValue, 0.0001f)) * 20;
+    }
+
+    public void PlayMusic() {
+        if (!musicAudioSource.isPlaying) {
+            musicAudioSource.Play();
+        }
+    }
+
+    public void PlaySFX() {
+        if (!sfxAudioSource.isPlaying) {
+            sfxAudioSource.Play();
+        }
+    }
+
+    public void StopMusic() {
+        musicAudioSource.Stop();
+    }
+
+    public void StopSFX() {
+        sfxAudioSource.Stop();
     }
 
     void GetResolutionOptions() {
