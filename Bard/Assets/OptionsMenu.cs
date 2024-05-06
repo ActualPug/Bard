@@ -24,36 +24,43 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] Toggle vsyncToggle;
 
     [SerializeField] Canvas optionsCanvas;
+
+    void Awake() {
+        // first time playing game set default preferences
+        if (!PlayerPrefs.HasKey("MasterVolume")) {
+            PlayerPrefs.SetFloat("MasterVolume", 1);
+        }
+        if (!PlayerPrefs.HasKey("MusicVolume")) {
+            PlayerPrefs.SetFloat("MusicVolume", 1);
+        }
+        if (!PlayerPrefs.HasKey("SFXVolume")) {
+            PlayerPrefs.SetFloat("SFXVolume", 1);
+        }
+        if (!PlayerPrefs.HasKey("ResolutionIndex")) {
+            PlayerPrefs.SetFloat("ResolutionIndex", Screen.resolutions.Length - 1);
+        }
+        if (!PlayerPrefs.HasKey("FullscreenEnabled")) {
+            PlayerPrefs.SetFloat("FullscreenEnabled", 1);
+        }
+        if (!PlayerPrefs.HasKey("VSyncEnabled")) {
+            PlayerPrefs.SetFloat("VSyncEnabled", 1);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetFloat("MasterVolume") == 0) { // first time playing
-            masterVolumeSlider.value = 1;
-        }
-        else { // load preference
-            masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
-        }
-        if (PlayerPrefs.GetFloat("MusicVolume") == 0) { // first time playing
-            musicVolumeSlider.value = 1;
-        }
-        else { // load preference
-            musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        }
-        if (PlayerPrefs.GetFloat("SFXVolume") == 0) { // first time playing
-            sfxVolumeSlider.value = 1;
-        }
-        else { // load preference
-            musicVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-        }
+        masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");        
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
         GetResolutionOptions();
         resDropdown.value = PlayerPrefs.GetInt("ResolutionIndex");
-        if (PlayerPrefs.GetInt("FullscreenToggled") == 1 || PlayerPrefs.GetInt("FullscreenToggled") == 0) {
+        if (PlayerPrefs.GetInt("FullscreenToggled") == 1) {
             fullscreenToggle.isOn = true;
         }
         else {
             fullscreenToggle.isOn = false;
         }
-        if (PlayerPrefs.GetInt("VSyncEnabled") == 1 || PlayerPrefs.GetInt("VSyncEnabled") == 0) {
+        if (PlayerPrefs.GetInt("VSyncEnabled") == 1) {
             vsyncToggle.isOn = true;
         }
         else {
@@ -89,7 +96,6 @@ public class OptionsMenu : MonoBehaviour
     void GetResolutionOptions() {
         resDropdown.ClearOptions();
         resolutions = Screen.resolutions;
-        resDropdown.options.Add(new TMP_Dropdown.OptionData("1920x1080"));
         for (int i = 0; i < resolutions.Length; i++) {
             TMP_Dropdown.OptionData newOption;
             newOption = new TMP_Dropdown.OptionData(resolutions[i].width.ToString() + "x" + resolutions[i].height.ToString());
@@ -105,10 +111,10 @@ public class OptionsMenu : MonoBehaviour
     public void SetFullscreen() {
         Screen.SetResolution(resolutions[resDropdown.value].width, resolutions[resDropdown.value].height, fullscreenToggle.isOn);
         if (fullscreenToggle.isOn) {
-            PlayerPrefs.SetInt("FullscreenToggled", 1);
+            PlayerPrefs.SetInt("FullscreenEnabled", 1);
         }
         else {
-            PlayerPrefs.SetInt("FullscreenToggled", 2);
+            PlayerPrefs.SetInt("FullscreenEnabled", 0);
         }
     }
 
@@ -118,7 +124,7 @@ public class OptionsMenu : MonoBehaviour
             PlayerPrefs.SetInt("VSyncEnabled", 1);
         }
         else {
-            PlayerPrefs.SetInt("VSyncEnabled", 2);
+            PlayerPrefs.SetInt("VSyncEnabled", 0);
         }
     }
 
@@ -132,16 +138,16 @@ public class OptionsMenu : MonoBehaviour
     }
 
     public void ResetPreferences() {
-        PlayerPrefs.SetFloat("MasterVolume", 0);
-        PlayerPrefs.SetFloat("MusicVolume", 0);
-        PlayerPrefs.SetFloat("SFXVolume", 0);
-        PlayerPrefs.SetInt("ResolutionIndex", 0);
-        PlayerPrefs.SetInt("FullscreenToggled", 0);
-        PlayerPrefs.SetInt("VSyncEnabled", 0);
+        PlayerPrefs.SetFloat("MasterVolume", 1);
+        PlayerPrefs.SetFloat("MusicVolume", 1);
+        PlayerPrefs.SetFloat("SFXVolume", 1);
+        PlayerPrefs.SetInt("ResolutionIndex", Screen.resolutions.Length - 1);
+        PlayerPrefs.SetInt("FullscreenToggled", 1);
+        PlayerPrefs.SetInt("VSyncEnabled", 1);
         masterVolumeSlider.value = 1;
         musicVolumeSlider.value = 1;
         sfxVolumeSlider.value = 1;
-        resDropdown.value = 0;
+        resDropdown.value = Screen.resolutions.Length - 1;
         fullscreenToggle.isOn = true;
         vsyncToggle.isOn = true;
     }
