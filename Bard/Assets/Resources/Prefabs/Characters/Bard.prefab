@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a359491c6a6e3a94db8c232e3496191a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  health: 3
+  speed: 3
+  health: 4
   body: {fileID: 3131543662307245686}
   animationStateChangers:
   - {fileID: 1686773931679994972}
@@ -250,8 +250,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0.001912266, y: -0.1924032}
+  m_Size: {x: 0.5554295, y: 1.6151936}
   m_Direction: 0
 --- !u!114 &3762177421617007743
 MonoBehaviour:
@@ -281,3 +281,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bardCreature: {fileID: 8725384966099688683}
   heartIconPrefab: {fileID: 1706187768110889889, guid: 44f3b7ba9c8d78d4daddafd5240d325b, type: 3}
+  canvasUI: {fileID: 0}

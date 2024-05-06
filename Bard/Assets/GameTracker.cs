@@ -11,12 +11,9 @@ public class GameTracker : MonoBehaviour
     [SerializeField] MusicBox musicBox;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI scoreToWinText;
-    [SerializeField] TextMeshProUGUI gameOverText;
+    [SerializeField] Canvas gameOverCanvas;
+    [SerializeField] Canvas youWinCanvas;
     [SerializeField] TextMeshProUGUI finalScoreText;
-    [SerializeField] TextMeshProUGUI youWinText;
-    [SerializeField] GameObject playAgainButton;
-    [SerializeField] GameObject mainMenuButton;
-    [SerializeField] GameObject nextLevelButton;
     bool gameEnded = false;
 
     void Start() {
@@ -31,11 +28,14 @@ public class GameTracker : MonoBehaviour
         // check for game over
         if (bard.gameOver && !gameEnded) {
             EndGame();
+            gameOverCanvas.enabled = true;
+            finalScoreText.text = "Final score: " + gameManager.GetComponent<ScoreTracker>().score.ToString();
         }
 
         // check for game win
         if (gameManager.GetComponent<ScoreTracker>().score >= gameManager.GetComponent<ScoreTracker>().scoreToWin && !gameEnded) {
-            WinGame();
+            EndGame();
+            youWinCanvas.enabled = true;
         }
     }
 
@@ -44,34 +44,6 @@ public class GameTracker : MonoBehaviour
         DisableEntities();
         musicBox.GetComponent<AudioSource>().Stop();
         Time.timeScale = 0;
-        DisplayEndGameUI();
-        Debug.Log("Game lost!");
-    }
-
-    void WinGame() {
-        gameEnded = true;
-        DisableEntities();
-        musicBox.GetComponent<AudioSource>().Stop();
-        Time.timeScale = 0;
-        DisplayWinGameUI();
-        Debug.Log("Game win!");
-    }
-
-    void DisplayEndGameUI() {
-        scoreText.enabled = false;
-        gameOverText.enabled = true;
-        finalScoreText.text = "Final score: " + gameManager.GetComponent<ScoreTracker>().score.ToString();
-        finalScoreText.enabled = true;
-        playAgainButton.SetActive(true);
-        mainMenuButton.SetActive(true);
-    }
-
-    void DisplayWinGameUI() {
-        youWinText.enabled = true;
-        finalScoreText.text = "Now continue on to the next level!";
-        finalScoreText.enabled = true;
-        nextLevelButton.SetActive(true);
-        mainMenuButton.SetActive(true);
     }
 
     void DisableEntities() {

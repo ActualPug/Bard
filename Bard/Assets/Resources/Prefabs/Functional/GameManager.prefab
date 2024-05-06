@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 128909809366858688}
   - component: {fileID: 6817215071652518952}
   m_Layer: 0
-  m_Name: ScoreTracker
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   bard: {fileID: 0}
+  scoreToWin: 0
   score: 0
 --- !u!114 &128909809366858688
 MonoBehaviour:
@@ -62,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenFader: {fileID: 0}
+  currentLevel: 1
 --- !u!114 &6817215071652518952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +80,7 @@ MonoBehaviour:
   gameManager: {fileID: 3067506751779985441}
   musicBox: {fileID: 0}
   scoreText: {fileID: 0}
-  gameOverText: {fileID: 0}
+  scoreToWinText: {fileID: 0}
+  gameOverCanvas: {fileID: 0}
+  youWinCanvas: {fileID: 0}
   finalScoreText: {fileID: 0}
-  playAgainButton: {fileID: 0}
-  mainMenuButton: {fileID: 0}

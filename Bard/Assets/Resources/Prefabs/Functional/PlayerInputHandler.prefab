@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427e65ca8177f3d4d8784ede763104a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bard: {fileID: 0}
+  playerCreature: {fileID: 0}
+  optionsCanvas: {fileID: 0}
+  cooldownTime: 0.25

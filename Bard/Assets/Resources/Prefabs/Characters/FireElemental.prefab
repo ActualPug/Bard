@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a359491c6a6e3a94db8c232e3496191a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
   health: 3
   body: {fileID: 8114901303185266854}
   animationStateChangers:
@@ -137,7 +137,7 @@ MonoBehaviour:
     m_Bits: 192
   searchShortcut: 0
   snapToGrid: 0
-  drawDebugLines: 1
+  drawDebugLines: 0
   gridSize: 0.5
 --- !u!82 &5492427515416296907
 AudioSource:
