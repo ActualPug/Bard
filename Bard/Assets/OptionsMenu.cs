@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] AudioSource musicAudioSource;
     [SerializeField] AudioSource sfxAudioSource;
 
-    /*void Awake() {
+    void Awake() {
         // first time playing game set default preferences
         if (!PlayerPrefs.HasKey("MasterVolume")) {
             PlayerPrefs.SetFloat("MasterVolume", 1);
@@ -49,7 +50,7 @@ public class OptionsMenu : MonoBehaviour
         if (!PlayerPrefs.HasKey("VSyncEnabled")) {
             PlayerPrefs.SetFloat("VSyncEnabled", 1);
         }
-    }*/
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -159,7 +160,9 @@ public class OptionsMenu : MonoBehaviour
     public void CloseOptions() {
         optionsCanvas.enabled = false;
         Time.timeScale = 1;
-        music.Play();
+        if (!(SceneManager.GetActiveScene().name == "MainMenu")) {
+            music.Play();
+        }
     }
 
     public void ResetPreferences() {

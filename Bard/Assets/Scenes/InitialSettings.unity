@@ -175,6 +175,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8832216809824711055, guid: e97f540933bb6c542bb707b4ba743f70, type: 3}
+      propertyPath: musicBoxSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 019f979706e410249991f2655a40d317, type: 2}
+    - target: {fileID: 8832216809824711055, guid: e97f540933bb6c542bb707b4ba743f70, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 111636506}
     - target: {fileID: 8898506762424084696, guid: e97f540933bb6c542bb707b4ba743f70, type: 3}
       propertyPath: Loop
       value: 1

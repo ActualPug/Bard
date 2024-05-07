@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class MusicBox : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] MusicBoxSO musicBoxSO;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Awake() {
+        audioSource.time = musicBoxSO.playbackPosition;
     }
 
 }
