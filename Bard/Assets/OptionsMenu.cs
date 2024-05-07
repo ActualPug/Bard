@@ -25,10 +25,11 @@ public class OptionsMenu : MonoBehaviour
 
     [Header("Others")]
     [SerializeField] Canvas optionsCanvas;
+    [SerializeField] AudioSource music;
     [SerializeField] AudioSource musicAudioSource;
     [SerializeField] AudioSource sfxAudioSource;
 
-    void Awake() {
+    /*void Awake() {
         // first time playing game set default preferences
         if (!PlayerPrefs.HasKey("MasterVolume")) {
             PlayerPrefs.SetFloat("MasterVolume", 1);
@@ -48,13 +49,13 @@ public class OptionsMenu : MonoBehaviour
         if (!PlayerPrefs.HasKey("VSyncEnabled")) {
             PlayerPrefs.SetFloat("VSyncEnabled", 1);
         }
-    }
+    }*/
     // Start is called before the first frame update
     void Start()
     {
-        masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");        
+        masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");     
         musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        musicVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
         GetResolutionOptions();
         resDropdown.value = PlayerPrefs.GetInt("ResolutionIndex");
         if (PlayerPrefs.GetInt("FullscreenEnabled") == 1) {
@@ -158,6 +159,7 @@ public class OptionsMenu : MonoBehaviour
     public void CloseOptions() {
         optionsCanvas.enabled = false;
         Time.timeScale = 1;
+        music.Play();
     }
 
     public void ResetPreferences() {

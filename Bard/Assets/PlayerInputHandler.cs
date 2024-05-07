@@ -8,6 +8,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] Creature playerCreature;
     [SerializeField] Canvas optionsCanvas;
     [SerializeField] float cooldownTime = 0.5f;
+    [SerializeField] AudioSource musicAudioSource;
     ProjectileThrower projectileThrower;
     bool onCooldown = false;
     // Start is called before the first frame update
@@ -62,18 +63,20 @@ public class PlayerInputHandler : MonoBehaviour
             shooting = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.E)){
+        /*if(Input.GetKeyDown(KeyCode.E)){
             projectileThrower.Launch(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        }
+        }*/
 
         if(Input.GetKeyDown(KeyCode.Escape)) {
             if (optionsCanvas.enabled == true) {
                 optionsCanvas.enabled = false;
                 Time.timeScale = 1;
+                musicAudioSource.Play();
             }
             else {
-                Time.timeScale = 0;
                 optionsCanvas.enabled = true;
+                Time.timeScale = 0;
+                musicAudioSource.Pause();
             }
         }
 

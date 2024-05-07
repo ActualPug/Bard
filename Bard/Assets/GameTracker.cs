@@ -8,7 +8,7 @@ public class GameTracker : MonoBehaviour
 {
     [SerializeField] Bard bard;
     [SerializeField] GameObject gameManager;
-    [SerializeField] MusicBox musicBox;
+    [SerializeField] AudioSource musicAudioSource;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI scoreToWinText;
     [SerializeField] Canvas gameOverCanvas;
@@ -42,7 +42,7 @@ public class GameTracker : MonoBehaviour
     void EndGame() {
         gameEnded = true;
         DisableEntities();
-        musicBox.GetComponent<AudioSource>().Stop();
+        musicAudioSource.Stop();
         Time.timeScale = 0;
     }
 
