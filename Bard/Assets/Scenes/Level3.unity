@@ -2840,12 +2840,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1803907010}
     - target: {fileID: 4308554850183655370, guid: 1f34499ce8baed84ba4d890e33bb9030, type: 3}
+      propertyPath: waitTimeInSeconds
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308554850183655370, guid: 1f34499ce8baed84ba4d890e33bb9030, type: 3}
       propertyPath: difficultyModifier
       value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4308554850183655370, guid: 1f34499ce8baed84ba4d890e33bb9030, type: 3}
       propertyPath: difficultyFrequency
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308554850183655370, guid: 1f34499ce8baed84ba4d890e33bb9030, type: 3}
+      propertyPath: enemiesToSpawn.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4308554850183655370, guid: 1f34499ce8baed84ba4d890e33bb9030, type: 3}
       propertyPath: spawnLocations.Array.size
@@ -2930,6 +2938,22 @@ PrefabInstance:
     - target: {fileID: 4308554850183655370, guid: 1f34499ce8baed84ba4d890e33bb9030, type: 3}
       propertyPath: spawnLocations.Array.data[7].z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308554850183655370, guid: 1f34499ce8baed84ba4d890e33bb9030, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308554850183655370, guid: 1f34499ce8baed84ba4d890e33bb9030, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[1].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308554850183655370, guid: 1f34499ce8baed84ba4d890e33bb9030, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[0].enemyToSpawn
+      value: FireElemental
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308554850183655370, guid: 1f34499ce8baed84ba4d890e33bb9030, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[1].enemyToSpawn
+      value: Ghost
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

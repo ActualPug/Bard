@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireElemental : MonoBehaviour
+public class Ghost : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
-    [SerializeField] Creature fireElementalCreature;
+    [SerializeField] Creature ghostCreature;
     void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "PlayerProjectile") {
-            fireElementalCreature.health -= 1;
-            if (fireElementalCreature.health <= 0) {
+            ghostCreature.health -= 1;
+            if (ghostCreature.health <= 0) {
                 Death();
             }
         } else if (other.gameObject.tag == "Player") {
