@@ -42,7 +42,7 @@ public class GameTracker : MonoBehaviour
     void EndGame() {
         gameEnded = true;
         DisableEntities();
-        musicAudioSource.Stop();
+        musicAudioSource.Pause();
         Time.timeScale = 0;
     }
 

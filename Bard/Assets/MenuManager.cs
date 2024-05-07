@@ -12,7 +12,7 @@ public class MenuManager : MonoBehaviour
 
     public void PlayAgain() {
         screenFader.FadeToColor("Level1");
-        musicBoxSO.playbackPosition = music.time;
+        musicBoxSO.playbackPosition = 0;
     }
 
     public void NextLevel() {
@@ -23,7 +23,7 @@ public class MenuManager : MonoBehaviour
 
     public void MainMenu() {
         screenFader.FadeToColor("MainMenu");
-        musicBoxSO.playbackPosition = music.time;
+        musicBoxSO.playbackPosition = 0;
     }
 
     public void Play() {
