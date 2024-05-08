@@ -2759,6 +2759,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9064646863574483216, guid: 244a1449c21dd5344927715eaf207819, type: 3}
   m_PrefabInstance: {fileID: 862509548}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &1999475457 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7626338457272676702, guid: 2211c6830aa025546afa46451bc844a6, type: 3}
+  m_PrefabInstance: {fileID: 345717450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2046314037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9064646863574483216, guid: 244a1449c21dd5344927715eaf207819, type: 3}
@@ -2829,6 +2834,10 @@ PrefabInstance:
       propertyPath: bardCreature
       value: 
       objectReference: {fileID: 1803907010}
+    - target: {fileID: 4308554850183655370, guid: 1f34499ce8baed84ba4d890e33bb9030, type: 3}
+      propertyPath: waitTimeInSeconds
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 4308554850183655370, guid: 1f34499ce8baed84ba4d890e33bb9030, type: 3}
       propertyPath: difficultyModifier
       value: 0.75
@@ -3112,6 +3121,10 @@ PrefabInstance:
       propertyPath: bard
       value: 
       objectReference: {fileID: 992486207}
+    - target: {fileID: -5850418479656958722, guid: 27ec07cb9de3d514598b2b4e1ef1a772, type: 3}
+      propertyPath: optionsCanvas
+      value: 
+      objectReference: {fileID: 1999475457}
     - target: {fileID: -5850418479656958722, guid: 27ec07cb9de3d514598b2b4e1ef1a772, type: 3}
       propertyPath: playerCreature
       value: 

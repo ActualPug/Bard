@@ -136,9 +136,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   searchShortcut: 0
-  snapToGrid: 0
+  snapToGrid: 1
   drawDebugLines: 0
-  gridSize: 0.5
+  gridSize: 1
 --- !u!82 &5492427515416296907
 AudioSource:
   m_ObjectHideFlags: 0
