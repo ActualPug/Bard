@@ -1,0 +1,59 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://bqng8nrn0feib"]
+
+[ext_resource type="Texture2D" uid="uid://c4a0dgigl6kpo" path="res://Sprites/Characters/Bard/bard-idle-animation.png" id="1_m3hbt"]
+[ext_resource type="Texture2D" uid="uid://ddlf56y4wsgku" path="res://Sprites/Characters/Bard/bard-walking-animation.png" id="2_4dip6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xvqe"]
+atlas = ExtResource("1_m3hbt")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx7lo"]
+atlas = ExtResource("1_m3hbt")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4bhm"]
+atlas = ExtResource("1_m3hbt")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1of6y"]
+atlas = ExtResource("1_m3hbt")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3k0m"]
+atlas = ExtResource("2_4dip6")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hy2q"]
+atlas = ExtResource("2_4dip6")
+region = Rect2(16, 0, 16, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xvqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx7lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4bhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1of6y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3k0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hy2q")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]

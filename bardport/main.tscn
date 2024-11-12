@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=3 uid="uid://cknlliwus7seo"]
+
+[ext_resource type="Script" path="res://Source/GameWorld.cs" id="1_dmb86"]
+[ext_resource type="PackedScene" uid="uid://ox5gpxfl2u1g" path="res://Maps/map_1.tscn" id="1_rgorn"]
+[ext_resource type="PackedScene" uid="uid://bpsj83sosp5ti" path="res://player.tscn" id="2_wx2lu"]
+[ext_resource type="Texture2D" uid="uid://d0rn7g0actvrs" path="res://Sprites/UI/wasd-keys.png" id="3_52uv8"]
+[ext_resource type="Texture2D" uid="uid://r4c7vud8ec7m" path="res://Sprites/UI/arrow-keys.png" id="4_08c5u"]
+[ext_resource type="Texture2D" uid="uid://5wi21ypj3m3w" path="res://Sprites/UI/escape-key.png" id="5_xuspo"]
+
+[node name="Main" type="Node2D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 256.0
+offset_top = 32.0
+offset_right = 1280.0
+offset_bottom = 608.0
+scale = Vector2(2, 2)
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+audio_listener_enable_2d = true
+size = Vector2i(1024, 576)
+render_target_update_mode = 4
+script = ExtResource("1_dmb86")
+
+[node name="map_1" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_rgorn")]
+
+[node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_wx2lu")]
+position = Vector2(128, 128)
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(512, 288)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 241.0
+offset_bottom = 561.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 15.0
+offset_right = 241.0
+offset_bottom = 561.0
+
+[node name="CurrentScore" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="ScoreNeeded" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Score Needed: 0"
+
+[node name="Spacer" type="Control" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="Move" type="HBoxContainer" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Move" type="Label" parent="UI/VBoxContainer/Move"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Move"
+
+[node name="WASD" type="TextureRect" parent="UI/VBoxContainer/Move"]
+custom_minimum_size = Vector2(72, 48)
+layout_mode = 2
+texture = ExtResource("3_52uv8")
+
+[node name="Spacer2" type="Control" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Shoot" type="HBoxContainer" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Shoot" type="Label" parent="UI/VBoxContainer/Shoot"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Shoot"
+
+[node name="Arrows" type="TextureRect" parent="UI/VBoxContainer/Shoot"]
+custom_minimum_size = Vector2(72, 48)
+layout_mode = 2
+texture = ExtResource("4_08c5u")
+
+[node name="Spacer3" type="Control" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Pause" type="HBoxContainer" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Pause" type="Label" parent="UI/VBoxContainer/Pause"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Pause"
+
+[node name="ESC" type="TextureRect" parent="UI/VBoxContainer/Pause"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("5_xuspo")
+stretch_mode = 5

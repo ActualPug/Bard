@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpsj83sosp5ti"]
+
+[ext_resource type="Script" path="res://Source/Player.cs" id="1_5j64x"]
+[ext_resource type="SpriteFrames" uid="uid://bqng8nrn0feib" path="res://Sprites/Characters/Bard/bard_frames.tres" id="1_57886"]
+[ext_resource type="Script" path="res://Source/ProjectileThrower.cs" id="3_cy5t2"]
+[ext_resource type="Texture2D" uid="uid://bakfc0kch5y07" path="res://Sprites/Projectiles/eighth-note.png" id="4_7f8ou"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iowy1"]
+size = Vector2(16, 32)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("AnimSprite", "Thrower") groups=["Player"]]
+script = ExtResource("1_5j64x")
+AnimSprite = NodePath("PlayerSprite")
+Thrower = NodePath("ProjectileThrower")
+FireRate = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iowy1")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_57886")
+animation = &"idle"
+frame_progress = 0.00478409
+
+[node name="ProjectileThrower" type="Node2D" parent="."]
+script = ExtResource("3_cy5t2")
+ProjectileTexture = ExtResource("4_7f8ou")
+Speed = 500.0

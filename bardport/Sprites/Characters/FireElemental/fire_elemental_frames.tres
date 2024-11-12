@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://dc5562873m4ia"]
+
+[ext_resource type="Texture2D" uid="uid://xhgm752u0gnq" path="res://Sprites/Characters/FireElemental/fire-elemental-idle-animation.png" id="1_qmkc7"]
+[ext_resource type="Texture2D" uid="uid://bn8am04og88g4" path="res://Sprites/Characters/FireElemental/fire-elemental-walking-animation.png" id="2_s1euh"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qmkc7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s1euh")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]

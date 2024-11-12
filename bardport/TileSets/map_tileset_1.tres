@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://csrny3km0xxot"]
+
+[ext_resource type="Texture2D" uid="uid://c8gtm0nt41vjp" path="res://Sprites/MapTileSet1/atlas/maptileset1.png" id="1_x4nyw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ugggn"]
+texture = ExtResource("1_x4nyw")
+margins = Vector2i(4, 4)
+separation = Vector2i(4, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ugggn")
