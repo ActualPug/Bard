@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://be1bed178dw4x"
+path="res://.godot/imported/01 Instrument of Surrender.mp3-aa1420edbb1120720e59dd5fddf4adcb.mp3str"
+
+[deps]
+
+source_file="res://Music/01 Instrument of Surrender.mp3"
+dest_files=["res://.godot/imported/01 Instrument of Surrender.mp3-aa1420edbb1120720e59dd5fddf4adcb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

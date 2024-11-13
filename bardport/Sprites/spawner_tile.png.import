@@ -4,7 +4,7 @@ importer="texture_atlas"
 type="Texture2D"
 uid="uid://dmyj7m01trkf3"
 path="res://.godot/imported/spawner_tile.png-468b663158d06a2c51ae2de318933d58.res"
-group_file="res://Sprites/MapTileSet1/atlas/maptileset1.png"
+group_file="res://Sprites/MapTileSet/atlas/maptileset.png"
 valid=true
 [deps]
 
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/spawner_tile.png-468b663158d06a2c51ae2de31893
 
 [params]
 
-atlas_file="res://Sprites/MapTileSet1/atlas/maptileset1.png"
+atlas_file="res://Sprites/MapTileSet/atlas/maptileset.png"
 import_mode=0
 crop_to_region=true
 trim_alpha_border_from_region=false

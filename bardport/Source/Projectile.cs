@@ -15,6 +15,11 @@ public partial class Projectile : Area2D
 
     private void LocalBodyEntered(Node2D body)
     {
+        if (body.IsInGroup("HasHealth"))
+        {
+
+        }
+
         QueueFree();
     }
 

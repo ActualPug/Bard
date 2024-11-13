@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhpjesdelgl0o"]
+
+[ext_resource type="SpriteFrames" uid="uid://dc5562873m4ia" path="res://Sprites/Characters/FireElemental/fire_elemental_frames.tres" id="1_bbwwj"]
+[ext_resource type="Script" path="res://Source/KinematicCharacter.cs" id="1_d146t"]
+[ext_resource type="Script" path="res://Source/Controllers/CharacterController.cs" id="2_adt67"]
+[ext_resource type="Script" path="res://Source/PathingAgent.cs" id="3_ceq7q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7jvk"]
+size = Vector2(16, 16)
+
+[node name="FireElemental" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_d146t")
+Speed = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v7jvk")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = ExtResource("1_bbwwj")
+animation = &"walking"
+
+[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("CharacterBody", "CharacterSprite")]
+script = ExtResource("2_adt67")
+CharacterBody = NodePath("..")
+CharacterSprite = NodePath("../Sprite")
+
+[node name="PathingAgentInput" type="Node2D" parent="Controller"]
+script = ExtResource("3_ceq7q")
+Offset = Vector2(8, 8)

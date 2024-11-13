@@ -1,13 +1,40 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://dc5562873m4ia"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://dc5562873m4ia"]
 
 [ext_resource type="Texture2D" uid="uid://xhgm752u0gnq" path="res://Sprites/Characters/FireElemental/fire-elemental-idle-animation.png" id="1_qmkc7"]
 [ext_resource type="Texture2D" uid="uid://bn8am04og88g4" path="res://Sprites/Characters/FireElemental/fire-elemental-walking-animation.png" id="2_s1euh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31512"]
+atlas = ExtResource("1_qmkc7")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b38as"]
+atlas = ExtResource("1_qmkc7")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0w8t"]
+atlas = ExtResource("2_s1euh")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyd8e"]
+atlas = ExtResource("2_s1euh")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwkjp"]
+atlas = ExtResource("2_s1euh")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh3ky"]
+atlas = ExtResource("2_s1euh")
+region = Rect2(48, 0, 16, 32)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_qmkc7")
+"texture": SubResource("AtlasTexture_31512")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b38as")
 }],
 "loop": true,
 "name": &"idle",
@@ -15,7 +42,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_s1euh")
+"texture": SubResource("AtlasTexture_l0w8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyd8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwkjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rh3ky")
 }],
 "loop": true,
 "name": &"walking",

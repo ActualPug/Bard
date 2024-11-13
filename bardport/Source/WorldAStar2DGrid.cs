@@ -16,11 +16,7 @@ public partial class WorldAStar2DGrid : Node2D
     public AStarGrid2D Grid { get; private set; } = new();
 
     private readonly List<TileMapLayer> _layers = [];
-
-    public static Vector2I Vector2VectorI(Vector2 vec)
-    {
-        return new((int)vec.X, (int)vec.Y);
-    }
+    private readonly TileMapLayer _totalMap = new();
 
     public override void _Ready()
     {
@@ -31,11 +27,19 @@ public partial class WorldAStar2DGrid : Node2D
             if (node is TileMapLayer layer)
             {
                 _layers.Add(layer);
+                _totalMap.TileSet = layer.TileSet;
+                AddCellsToTotalMap(layer);
+
+                if (layer.IsInGroup("SpawnerLayer"))
+                {
+                    layer.Hide();
+                }
             }
         }
 
         Grid.Region = Region;
         Grid.CellSize = CellSize;
+        Grid.DiagonalMode = AStarGrid2D.DiagonalModeEnum.Never;
         Grid.Update();
 
         CutWallsFromGrid();
@@ -44,7 +48,6 @@ public partial class WorldAStar2DGrid : Node2D
     private void CutWallsFromGrid()
     {
         Vector2I[] tiles;
-        Rect2I cellRegion;
 
         foreach (TileMapLayer layer in _layers)
         {
@@ -54,25 +57,24 @@ public partial class WorldAStar2DGrid : Node2D
 
                 for (int j = 0; j < tiles.Length; ++j)
                 {
-                    cellRegion = new(tiles[j] - (TileSize / 2), TileSize);
-                    Grid.FillSolidRegion(cellRegion);
-                    //_grid2D.SetPointSolid(tiles[j]);
+                    Grid.SetPointSolid(tiles[j]);
                 }
             }
         }
     }
 
-    public Vector2I GetPositionID(Vector2 pos)
+    private void AddCellsToTotalMap(TileMapLayer layer)
     {
-        return new()
+        Vector2I[] cells = GodotCollection2CSharp.Array2Array(layer.GetUsedCells());
+
+        foreach (Vector2I cell in cells)
         {
-            X = Float2Id(pos.X),
-            Y = Float2Id(pos.Y)
-        };
+            _totalMap.SetCell(cell, sourceId: layer.GetCellSourceId(cell), atlasCoords: layer.GetCellAtlasCoords(cell));
+        }
     }
 
-    public int Float2Id(float f)
+    public Vector2I GetPositionID(Vector2 pos)
     {
-        return (int) (f / CellSize.X);
+        return _totalMap.LocalToMap(pos);
     }
 }
