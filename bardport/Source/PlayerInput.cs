@@ -3,8 +3,8 @@ using System;
 
 public partial class PlayerInput : Node2D
 {
-	public Vector2 MoveDirection { get; private set; } = new(0, 0);
-	public Vector2 ShootDirection { get; private set; } = new(0, 0);
+	public Vector2 MoveDirection { get; private set; } = Vector2.Zero;
+	public Vector2 ShootDirection { get; private set; } = Vector2.Zero;
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

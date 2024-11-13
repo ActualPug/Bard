@@ -3,8 +3,9 @@ using System;
 
 public partial class KinematicCharacter : CharacterBody2D
 {
+	[Export]
 	public float Speed { get; set; } = 300.0f;
-	public Vector2 Direction { get; set; } = new(0, 0);
+	public Vector2 Direction { get; set; } = Vector2.Zero;
 
 	public override void _PhysicsProcess(double delta)
 	{
