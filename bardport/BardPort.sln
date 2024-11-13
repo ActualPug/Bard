@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BardPort", "BardPort.csproj", "{495BF6A6-F866-4B03-8ADF-B8CD06BE31CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{495BF6A6-F866-4B03-8ADF-B8CD06BE31CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{495BF6A6-F866-4B03-8ADF-B8CD06BE31CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{495BF6A6-F866-4B03-8ADF-B8CD06BE31CC}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{495BF6A6-F866-4B03-8ADF-B8CD06BE31CC}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{495BF6A6-F866-4B03-8ADF-B8CD06BE31CC}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{495BF6A6-F866-4B03-8ADF-B8CD06BE31CC}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal
