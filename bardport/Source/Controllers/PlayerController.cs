@@ -24,7 +24,7 @@ public partial class PlayerController : Node2D
         PlayerCharacter.Direction = _playerInput.MoveDirection;
 
         if (_playerInput.ShootDirection != Vector2.Zero)
-            PlayerProjThrower.ShootProjectile(_playerInput.ShootDirection, Vector2.Zero);
+            PlayerProjThrower.ShootProjectile(_playerInput.ShootDirection);
 
         if (_playerInput.MoveDirection.Length() > 0.05f)
         {

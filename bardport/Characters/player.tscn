@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpsj83sosp5ti"]
+[gd_scene load_steps=9 format=3 uid="uid://bpsj83sosp5ti"]
 
 [ext_resource type="SpriteFrames" uid="uid://bqng8nrn0feib" path="res://Sprites/Characters/Bard/bard_frames.tres" id="1_57886"]
 [ext_resource type="Script" path="res://Source/KinematicCharacter.cs" id="1_bb6hm"]
-[ext_resource type="Script" path="res://Source/ProjectileThrower.cs" id="3_cy5t2"]
-[ext_resource type="Texture2D" uid="uid://bakfc0kch5y07" path="res://Sprites/Projectiles/eighth-note.png" id="4_7f8ou"]
+[ext_resource type="Script" path="res://Source/Health.cs" id="2_b03vn"]
+[ext_resource type="Script" path="res://Source/Projectile/ProjectileThrower.cs" id="3_cy5t2"]
+[ext_resource type="PackedScene" uid="uid://ckwvx4dcnf864" path="res://Projectiles/eighth_note.tscn" id="4_84u0g"]
 [ext_resource type="Script" path="res://Source/Controllers/PlayerController.cs" id="5_51pmb"]
 [ext_resource type="Script" path="res://Source/PlayerInput.cs" id="6_i7e7g"]
 
@@ -17,6 +18,10 @@ Speed = 40.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iowy1")
 
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("2_b03vn")
+MaxHealth = 6
+
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_57886")
 animation = &"idle"
@@ -24,8 +29,7 @@ frame_progress = 0.00478409
 
 [node name="ProjectileThrower" type="Node2D" parent="."]
 script = ExtResource("3_cy5t2")
-ProjectileTexture = ExtResource("4_7f8ou")
-Speed = 500.0
+ProjectileScene = ExtResource("4_84u0g")
 Mask = 2
 
 [node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("PlayerCharacter", "PlayerProjThrower", "PlayerSprite")]
@@ -36,3 +40,5 @@ PlayerSprite = NodePath("../PlayerSprite")
 
 [node name="Input" type="Node2D" parent="Controller"]
 script = ExtResource("6_i7e7g")
+
+[connection signal="HealthDepleted" from="Health" to="." method="queue_free"]

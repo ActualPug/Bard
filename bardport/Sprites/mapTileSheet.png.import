@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8gtm0nt41vjp"
-path="res://.godot/imported/maptileset.png-98a03ba52e779da0e58d0f15d157c079.ctex"
+uid="uid://dnlneb10ehjaa"
+path="res://.godot/imported/mapTileSheet.png-6c6000c8aed42aaf5fcda262170aa38c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/MapTileSet/atlas/maptileset.png"
-dest_files=["res://.godot/imported/maptileset.png-98a03ba52e779da0e58d0f15d157c079.ctex"]
+source_file="res://Sprites/mapTileSheet.png"
+dest_files=["res://.godot/imported/mapTileSheet.png-6c6000c8aed42aaf5fcda262170aa38c.ctex"]
 
 [params]
 

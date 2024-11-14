@@ -29,6 +29,7 @@ WallLayer="Marks walls for pathfinding."
 Map="Group to describe all map objects."
 Player="Marks all nodes with this group as a player."
 SpawnerLayer="Group to identify spawner tiles."
+HasHealth="Indicates a node has a health child."
 
 [input]
 

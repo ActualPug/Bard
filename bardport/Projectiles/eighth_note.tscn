@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckwvx4dcnf864"]
+
+[ext_resource type="Script" path="res://Source/Projectile/Projectile.cs" id="1_h1oh2"]
+[ext_resource type="Script" path="res://Source/DamageArea.cs" id="1_kxghv"]
+[ext_resource type="Texture2D" uid="uid://bakfc0kch5y07" path="res://Sprites/Projectiles/eighth-note.png" id="2_dh77b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl5ib"]
+size = Vector2(8, 16)
+
+[node name="EighthNote" type="Node2D" node_paths=PackedStringArray("Area")]
+script = ExtResource("1_h1oh2")
+Speed = 100.0
+Area = NodePath("DamageArea")
+
+[node name="DamageArea" type="Area2D" parent="."]
+script = ExtResource("1_kxghv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("RectangleShape2D_sl5ib")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dh77b")

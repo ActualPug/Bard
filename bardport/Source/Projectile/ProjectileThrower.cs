@@ -5,14 +5,9 @@ using static Godot.TextServer;
 public partial class ProjectileThrower : Node2D
 {
     [Export]
-    public Texture2D ProjectileTexture { get; set; }
-
-    [Export]
-    public float Speed { get; set; } = 0f;
+    public PackedScene ProjectileScene { get; set; }
     [Export]
     public double FireRate { get; set; } = 1d;
-    [Export]
-    public double LifeTime { get; set; } = 15d;
     [Export]
     public uint Layer { get; set; } = 1;
     [Export]
@@ -29,7 +24,7 @@ public partial class ProjectileThrower : Node2D
         PoolProjectiles();
     }
 
-    public void ShootProjectile(Vector2 dir, Vector2 offset)
+    public void ShootProjectile(Vector2 dir)
     {
         Projectile proj;
         
@@ -39,10 +34,9 @@ public partial class ProjectileThrower : Node2D
         _ready = false;
 
         proj = GetFromPool();
-
-        proj.Speed = Speed;
         proj.Direction =  dir;
-        proj.GlobalPosition = GlobalPosition + offset;
+        proj.GlobalPosition = GlobalPosition;
+
         GetParent().GetParent().AddChild(proj);
         GetTree().CreateTimer(FireRate).Timeout += () => _ready = true;
     }
@@ -64,34 +58,11 @@ public partial class ProjectileThrower : Node2D
 
     private Projectile CreateProjectile()
     {
-        Projectile a2d;
+        Projectile proj = ProjectileScene.Instantiate<Projectile>();
 
-        RectangleShape2D rect = new()
-        {
-            Size = ProjectileTexture.GetSize()
-        };
+        proj.Mask = Mask;
+        proj.Layer = Layer;
 
-        CollisionShape2D shape = new()
-        {
-            Shape = rect
-        };
-
-        Sprite2D sprite = new()
-        {
-            Texture = ProjectileTexture
-        };
-
-        a2d = new()
-        {
-            CollisionLayer = Layer,
-            CollisionMask = Mask,
-        };
-
-        a2d.AddChild(shape);
-        a2d.AddChild(sprite);
-
-        a2d.LifeTime = LifeTime;
-
-        return a2d;
+        return proj;
     }
 }

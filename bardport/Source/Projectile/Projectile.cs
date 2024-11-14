@@ -1,25 +1,34 @@
 using Godot;
+using Godot.Collections;
 using System;
 
-public partial class Projectile : Area2D
+public partial class Projectile : Node2D
 {
+    [Export]
     public Vector2 Direction { get; set; }
+    [Export]
     public float Speed { get; set; }
+    [Export]
     public double LifeTime { get; set; } = 15;
+    [Export]
+    public int Damage { get; set; } = 1;
+    [Export]
+    public DamageArea Area { get; set; }
+    [Export]
+    public uint Layer { get; set; } = 1;
+    [Export]
+    public uint Mask { get; set; } = 1;
 
     public override void _Ready()
     {
-        BodyEntered += LocalBodyEntered;
         GetTree().CreateTimer(LifeTime).Timeout += QueueFree;
+        Area.CollisionLayer = Layer;
+        Area.CollisionMask = Mask;
+        Area.DamageDone += DamageDone;
     }
 
-    private void LocalBodyEntered(Node2D body)
+    public void DamageDone()
     {
-        if (body.IsInGroup("HasHealth"))
-        {
-
-        }
-
         QueueFree();
     }
 

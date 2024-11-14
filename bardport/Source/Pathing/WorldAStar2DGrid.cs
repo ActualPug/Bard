@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public partial class WorldAStar2DGrid : Node2D
 {
+    public static WorldAStar2DGrid CurrentWorldGrid { get; private set; }
+
     [Export]
     public Node2D TileMap { get; set; }
     [Export]
@@ -14,9 +16,16 @@ public partial class WorldAStar2DGrid : Node2D
     [Export]
     public Rect2I Region { get; set; } = new(0, 0, 64, 64);
     public AStarGrid2D Grid { get; private set; } = new();
+    public List<TileMapLayer> SpawnLayers { get; private set; } = [];
 
     private readonly List<TileMapLayer> _layers = [];
+    
     private readonly TileMapLayer _totalMap = new();
+
+    public WorldAStar2DGrid() : base()
+    {
+        CurrentWorldGrid = this;
+    }
 
     public override void _Ready()
     {
@@ -33,6 +42,7 @@ public partial class WorldAStar2DGrid : Node2D
                 if (layer.IsInGroup("SpawnerLayer"))
                 {
                     layer.Hide();
+                    SpawnLayers.Add(layer);
                 }
             }
         }
@@ -76,5 +86,22 @@ public partial class WorldAStar2DGrid : Node2D
     public Vector2I GetPositionID(Vector2 pos)
     {
         return _totalMap.LocalToMap(pos);
+    }
+
+    public Vector2[] GetPositionsOfTiles(Vector2I[] tiles)
+    {
+        List<Vector2> positions = [];
+
+        foreach (Vector2I cell in tiles)
+        {
+            positions.Add(_totalMap.MapToLocal(cell));
+        }
+
+        return [.. positions];
+    }
+
+    public TileMapLayer[] GetSpawnLayers()
+    {
+        return [.. SpawnLayers];
     }
 }

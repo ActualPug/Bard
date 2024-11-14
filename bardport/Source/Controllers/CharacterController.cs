@@ -7,6 +7,10 @@ public partial class CharacterController : Node
     public KinematicCharacter CharacterBody { get; set; }
     [Export]
     public AnimatedSprite2D CharacterSprite { get; set; }
+    [Export]
+    public double SwingSpeed { get; set; } = 0.5d;
+    [Export]
+    public DamageArea Area { get; set; }
 
     private PathingAgent _pathingInput;
     private string _curAnim = "idle";
@@ -14,6 +18,7 @@ public partial class CharacterController : Node
     public override void _Ready()
     {
         _pathingInput = GetChild<PathingAgent>(0);
+        Area.DamageDone += DamageDone;
     }
 
     public override void _Process(double delta)
@@ -30,5 +35,11 @@ public partial class CharacterController : Node
         }
 
         CharacterSprite.Play(_curAnim);
+    }
+
+    public void DamageDone()
+    {
+        Area.SetDeferred("Monitoring", false);
+        GetTree().CreateTimer(SwingSpeed).Timeout += () => Area.SetDeferred("Monitoring", true);
     }
 }
