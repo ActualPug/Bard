@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmwmxva61wddl"]
+
+[ext_resource type="Script" path="res://Source/KinematicCharacter.cs" id="1_s1fol"]
+[ext_resource type="Script" path="res://Source/Health.cs" id="2_vkwgn"]
+[ext_resource type="SpriteFrames" uid="uid://0lua4tei370p" path="res://Sprites/Characters/Ghost/ghost_frames.tres" id="3_nw7fs"]
+[ext_resource type="Script" path="res://Source/Controllers/CharacterController.cs" id="4_vhyhg"]
+[ext_resource type="Script" path="res://Source/Pathing/PathingAgent.cs" id="5_7ohxi"]
+[ext_resource type="Script" path="res://Source/DamageArea.cs" id="6_p5rls"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7jvk"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0co3x"]
+size = Vector2(16, 16)
+
+[node name="Ghost" type="CharacterBody2D" groups=["HasHealth"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_s1fol")
+Speed = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v7jvk")
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("2_vkwgn")
+MaxHealth = 2
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("3_nw7fs")
+animation = &"idle"
+
+[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("CharacterBody", "CharacterSprite", "Area")]
+script = ExtResource("4_vhyhg")
+CharacterBody = NodePath("..")
+CharacterSprite = NodePath("../Sprite")
+Area = NodePath("../DamageArea")
+
+[node name="PathingAgentInput" type="Node2D" parent="Controller"]
+script = ExtResource("5_7ohxi")
+Offset = Vector2(8, 8)
+
+[node name="DamageArea" type="Area2D" parent="."]
+script = ExtResource("6_p5rls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("RectangleShape2D_0co3x")
+
+[connection signal="HealthDepleted" from="Health" to="." method="queue_free"]

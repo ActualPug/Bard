@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://0lua4tei370p"]
+
+[ext_resource type="Texture2D" uid="uid://dal2k1cgdwuya" path="res://Sprites/Characters/Ghost/ghost-default.png" id="1_iglug"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iglug")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iglug")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]

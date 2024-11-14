@@ -15,11 +15,12 @@ public partial class WorldAStar2DGrid : Node2D
     public Vector2 CellSize { get; set; } = new(16, 16);
     [Export]
     public Rect2I Region { get; set; } = new(0, 0, 64, 64);
+    [Export]
+    public Texture2D DBGTile { get; set; }
     public AStarGrid2D Grid { get; private set; } = new();
     public List<TileMapLayer> SpawnLayers { get; private set; } = [];
 
     private readonly List<TileMapLayer> _layers = [];
-    
     private readonly TileMapLayer _totalMap = new();
 
     public WorldAStar2DGrid() : base()
@@ -68,6 +69,14 @@ public partial class WorldAStar2DGrid : Node2D
                 for (int j = 0; j < tiles.Length; ++j)
                 {
                     Grid.SetPointSolid(tiles[j]);
+
+                    Sprite2D sprite = new()
+                    {
+                        GlobalPosition = GetPositionOfTile(tiles[j]),
+                        Texture = DBGTile
+                    };
+
+                    GetParent().CallDeferred("add_child", sprite);
                 }
             }
         }
@@ -88,16 +97,31 @@ public partial class WorldAStar2DGrid : Node2D
         return _totalMap.LocalToMap(pos);
     }
 
+    public Vector2[] GetPointPath(Vector2I fromID, Vector2I toID)
+    {
+        return Grid.GetPointPath(fromID, toID);
+    }
+
+    public Vector2[] GetPointPath(Vector2 from, Vector2 to)
+    {
+        return Grid.GetPointPath(GetPositionID(from), GetPositionID(to));
+    }
+
     public Vector2[] GetPositionsOfTiles(Vector2I[] tiles)
     {
         List<Vector2> positions = [];
 
-        foreach (Vector2I cell in tiles)
+        foreach (Vector2I tile in tiles)
         {
-            positions.Add(_totalMap.MapToLocal(cell));
+            positions.Add(GetPositionOfTile(tile));
         }
 
         return [.. positions];
+    }
+
+    public Vector2 GetPositionOfTile(Vector2I tile)
+    {
+        return _totalMap.MapToLocal(tile);
     }
 
     public TileMapLayer[] GetSpawnLayers()
