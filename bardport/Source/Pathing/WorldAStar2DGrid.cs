@@ -15,8 +15,6 @@ public partial class WorldAStar2DGrid : Node2D
     public Vector2 CellSize { get; set; } = new(16, 16);
     [Export]
     public Rect2I Region { get; set; } = new(0, 0, 64, 64);
-    [Export]
-    public Texture2D DBGTile { get; set; }
     public AStarGrid2D Grid { get; private set; } = new();
     public List<TileMapLayer> SpawnLayers { get; private set; } = [];
 
@@ -69,14 +67,6 @@ public partial class WorldAStar2DGrid : Node2D
                 for (int j = 0; j < tiles.Length; ++j)
                 {
                     Grid.SetPointSolid(tiles[j]);
-
-                    Sprite2D sprite = new()
-                    {
-                        GlobalPosition = GetPositionOfTile(tiles[j]),
-                        Texture = DBGTile
-                    };
-
-                    GetParent().CallDeferred("add_child", sprite);
                 }
             }
         }

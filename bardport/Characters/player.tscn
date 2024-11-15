@@ -1,18 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpsj83sosp5ti"]
+[gd_scene load_steps=14 format=3 uid="uid://bpsj83sosp5ti"]
 
 [ext_resource type="SpriteFrames" uid="uid://bqng8nrn0feib" path="res://Sprites/Characters/Bard/bard_frames.tres" id="1_57886"]
 [ext_resource type="Script" path="res://Source/KinematicCharacter.cs" id="1_bb6hm"]
 [ext_resource type="Script" path="res://Source/Health.cs" id="2_b03vn"]
 [ext_resource type="Script" path="res://Source/Projectile/ProjectileThrower.cs" id="3_cy5t2"]
+[ext_resource type="Shader" path="res://Shaders/blink.gdshader" id="3_r6itl"]
 [ext_resource type="PackedScene" uid="uid://ckwvx4dcnf864" path="res://Projectiles/eighth_note.tscn" id="4_84u0g"]
 [ext_resource type="Script" path="res://Source/Controllers/PlayerController.cs" id="5_51pmb"]
 [ext_resource type="Script" path="res://Source/PlayerInput.cs" id="6_i7e7g"]
-[ext_resource type="Script" path="res://Source/HealthDisplay.cs" id="8_75x66"]
+[ext_resource type="Script" path="res://Source/UI/HealthDisplay.cs" id="8_75x66"]
 [ext_resource type="Texture2D" uid="uid://dn2dq4711i3k8" path="res://Sprites/UI/heart-full.png" id="9_jbdk8"]
 [ext_resource type="Texture2D" uid="uid://de2ay6thx4naa" path="res://Sprites/UI/heart-half.png" id="10_4vsj2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iowy1"]
 size = Vector2(16, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hk884"]
+shader = ExtResource("3_r6itl")
+shader_parameter/flash_speed = 0.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_bb6hm")
@@ -26,6 +31,7 @@ script = ExtResource("2_b03vn")
 MaxHealth = 6
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_hk884")
 sprite_frames = ExtResource("1_57886")
 animation = &"idle"
 frame_progress = 0.00478409
@@ -33,13 +39,16 @@ frame_progress = 0.00478409
 [node name="ProjectileThrower" type="Node2D" parent="."]
 script = ExtResource("3_cy5t2")
 ProjectileScene = ExtResource("4_84u0g")
+FireRate = 0.5
 Mask = 2
 
-[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("PlayerCharacter", "PlayerProjThrower", "PlayerSprite")]
+[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("PlayerCharacter", "PlayerProjThrower", "PlayerSprite", "PlayerHealth")]
 script = ExtResource("5_51pmb")
 PlayerCharacter = NodePath("..")
 PlayerProjThrower = NodePath("../ProjectileThrower")
 PlayerSprite = NodePath("../PlayerSprite")
+PlayerHealth = NodePath("../Health")
+InvulnTime = 1.0
 
 [node name="Input" type="Node2D" parent="Controller"]
 script = ExtResource("6_i7e7g")
@@ -56,6 +65,7 @@ EntityHP = NodePath("../../Health")
 HeartTextures = Array[Texture2D]([ExtResource("9_jbdk8"), ExtResource("10_4vsj2")])
 HeartContainer = NodePath("VBoxContainer/HBoxContainer")
 LiftToRoot = true
+MinHeartSize = Vector2(32, 32)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DisplayCanvas/HealthDisplay"]
 layout_mode = 2
@@ -66,5 +76,4 @@ offset_bottom = 576.0
 layout_mode = 2
 alignment = 2
 
-[connection signal="HealthChanged" from="Health" to="DisplayCanvas/HealthDisplay" method="DisplayHearts"]
 [connection signal="HealthDepleted" from="Health" to="." method="queue_free"]

@@ -9,6 +9,8 @@ public partial class MapDescriptor : Node2D
     public KinematicCharacter Player { get; set; }
     [Export]
     public EnemyManager Manager { get; set; }
+    [Export]
+    public uint ScoreNeeded { get; set; } = 10;
 
     private Node2D _randomPosition = new();
 
@@ -20,6 +22,7 @@ public partial class MapDescriptor : Node2D
             GlobalPosition = new(random.RandfRange(512, 1024), random.RandfRange(512, 1024))
         };
         AddChild(randPos);
+        ScoreBoard.ScoreNeeded = ScoreNeeded;
     }
 
     public override void _Process(double delta)

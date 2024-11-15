@@ -24,12 +24,8 @@ public partial class Projectile : Node2D
         GetTree().CreateTimer(LifeTime).Timeout += QueueFree;
         Area.CollisionLayer = Layer;
         Area.CollisionMask = Mask;
-        Area.DamageDone += DamageDone;
-    }
-
-    public void DamageDone()
-    {
-        QueueFree();
+        Area.DamageDone += QueueFree;
+        Area.WasDestroyed += QueueFree;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

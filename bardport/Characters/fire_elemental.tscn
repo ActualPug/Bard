@@ -30,10 +30,11 @@ position = Vector2(0, -8)
 sprite_frames = ExtResource("1_bbwwj")
 animation = &"walking"
 
-[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("CharacterBody", "CharacterSprite", "Area")]
+[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("CharacterBody", "CharacterSprite", "ChracterHealth", "Area")]
 script = ExtResource("2_adt67")
 CharacterBody = NodePath("..")
 CharacterSprite = NodePath("../Sprite")
+ChracterHealth = NodePath("../Health")
 Area = NodePath("../DamageArea")
 
 [node name="PathingAgentInput" type="Node2D" parent="Controller"]
@@ -45,5 +46,3 @@ script = ExtResource("6_n62h5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 shape = SubResource("RectangleShape2D_0co3x")
-
-[connection signal="HealthDepleted" from="Health" to="." method="queue_free"]

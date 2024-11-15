@@ -10,6 +10,10 @@ public partial class PlayerController : Node2D
     public ProjectileThrower PlayerProjThrower { get; set; }
     [Export]
     public AnimatedSprite2D PlayerSprite { get; set; }
+    [Export]
+    public Health PlayerHealth { get; set; }
+    [Export]
+    public double InvulnTime { get; set; } = 0.5d;
 
     private PlayerInput _playerInput;
     private string _curAnim = "idle";
@@ -17,6 +21,7 @@ public partial class PlayerController : Node2D
     public override void _Ready()
     {
         _playerInput = GetChild<PlayerInput>(0);
+        PlayerHealth.HealthChanged += StartInvuln;
     }
 
     public override void _Process(double delta)
@@ -36,5 +41,17 @@ public partial class PlayerController : Node2D
         }
 
         PlayerSprite.Play(_curAnim);
+    }
+
+    public void StartInvuln(int curHealth)
+    {
+        PlayerHealth.Invincible = true;
+        GetTree().CreateTimer(InvulnTime).Timeout += () =>
+        {
+            PlayerHealth.Invincible = false;
+            PlayerSprite.Material.Set("shader_parameter/flash_speed", 0);
+        };
+
+        PlayerSprite.Material.Set("shader_parameter/flash_speed", 20);
     }
 }

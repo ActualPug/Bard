@@ -30,11 +30,13 @@ MaxHealth = 2
 sprite_frames = ExtResource("3_nw7fs")
 animation = &"idle"
 
-[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("CharacterBody", "CharacterSprite", "Area")]
+[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("CharacterBody", "CharacterSprite", "ChracterHealth", "Area")]
 script = ExtResource("4_vhyhg")
 CharacterBody = NodePath("..")
 CharacterSprite = NodePath("../Sprite")
+ChracterHealth = NodePath("../Health")
 Area = NodePath("../DamageArea")
+Score = 2
 
 [node name="PathingAgentInput" type="Node2D" parent="Controller"]
 script = ExtResource("5_7ohxi")

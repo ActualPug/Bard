@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://bl87lna0jljlm"]
+[gd_scene load_steps=5 format=4 uid="uid://bl87lna0jljlm"]
 
 [ext_resource type="TileSet" uid="uid://csrny3km0xxot" path="res://TileSets/map_tileset.tres" id="1_pguqw"]
 [ext_resource type="Script" path="res://Source/Pathing/WorldAStar2DGrid.cs" id="2_oskv3"]
-[ext_resource type="Texture2D" uid="uid://ekgyre2lkjqr" path="res://Sprites/dbg_tile.png" id="3_071y3"]
 [ext_resource type="PackedScene" uid="uid://bpsj83sosp5ti" path="res://Characters/player.tscn" id="3_svjiv"]
 [ext_resource type="PackedScene" uid="uid://bhpjesdelgl0o" path="res://Characters/fire_elemental.tscn" id="4_c3x38"]
 
@@ -25,12 +24,12 @@ tile_set = ExtResource("1_pguqw")
 [node name="AStarGrid" type="Node2D" parent="." node_paths=PackedStringArray("TileMap")]
 script = ExtResource("2_oskv3")
 TileMap = NodePath("../TileMap")
-DBGTile = ExtResource("3_071y3")
 
 [node name="Player" parent="." instance=ExtResource("3_svjiv")]
 position = Vector2(160, 160)
 
 [node name="FireElemental" parent="." instance=ExtResource("4_c3x38")]
+position = Vector2(161, 98)
 
 [node name="PathingAgentInput" parent="FireElemental/Controller" index="0" node_paths=PackedStringArray("Target")]
 Target = NodePath("../../../Player")
