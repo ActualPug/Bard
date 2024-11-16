@@ -22,6 +22,7 @@ public partial class PlayerController : Node2D
     {
         _playerInput = GetChild<PlayerInput>(0);
         PlayerHealth.HealthChanged += StartInvuln;
+        PlayerHealth.HealthDepleted += Die;
     }
 
     public override void _Process(double delta)
@@ -53,5 +54,14 @@ public partial class PlayerController : Node2D
         };
 
         PlayerSprite.Material.Set("shader_parameter/flash_speed", 20);
+    }
+
+    public void Die()
+    {
+        if (PlayerSprite.Visible)
+        {
+            GetTree().CreateTimer(2).Timeout += () => GetTree().ChangeSceneToFile("res://UI/game_over.tscn");
+            PlayerSprite.Visible = false;
+        }
     }
 }

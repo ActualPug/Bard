@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmwmxva61wddl"]
+[gd_scene load_steps=10 format=3 uid="uid://cmwmxva61wddl"]
 
 [ext_resource type="Script" path="res://Source/KinematicCharacter.cs" id="1_s1fol"]
 [ext_resource type="Script" path="res://Source/Health.cs" id="2_vkwgn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Source/Controllers/CharacterController.cs" id="4_vhyhg"]
 [ext_resource type="Script" path="res://Source/Pathing/PathingAgent.cs" id="5_7ohxi"]
 [ext_resource type="Script" path="res://Source/DamageArea.cs" id="6_p5rls"]
+[ext_resource type="AudioStream" uid="uid://48fa44tb016k" path="res://Audio/SFX/104028__rutgermuller__scream1_short.wav" id="7_pyhp0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7jvk"]
 size = Vector2(16, 16)
@@ -30,13 +31,14 @@ MaxHealth = 2
 sprite_frames = ExtResource("3_nw7fs")
 animation = &"idle"
 
-[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("CharacterBody", "CharacterSprite", "ChracterHealth", "Area")]
+[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("CharacterBody", "CharacterSprite", "ChracterHealth", "Area", "DeathSFX")]
 script = ExtResource("4_vhyhg")
 CharacterBody = NodePath("..")
 CharacterSprite = NodePath("../Sprite")
 ChracterHealth = NodePath("../Health")
 Area = NodePath("../DamageArea")
 Score = 2
+DeathSFX = NodePath("../DeathSFX")
 
 [node name="PathingAgentInput" type="Node2D" parent="Controller"]
 script = ExtResource("5_7ohxi")
@@ -47,5 +49,9 @@ script = ExtResource("6_p5rls")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 shape = SubResource("RectangleShape2D_0co3x")
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_pyhp0")
+bus = &"SoundEffects"
 
 [connection signal="HealthDepleted" from="Health" to="." method="queue_free"]

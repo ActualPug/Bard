@@ -8,12 +8,12 @@ public partial class MainMenu : Control
 
     public void StartGame()
     {
-        GetTree().ChangeSceneToPacked(MainGame);
+        GetTree().ChangeSceneToFile("res://main.tscn");
     }
 
     public void Settings()
     {
-        GD.Print("Thanks gamer!!!!");
+        GetTree().ChangeSceneToFile("res://UI/settings_menu.tscn");
     }
 
     public void Quit()

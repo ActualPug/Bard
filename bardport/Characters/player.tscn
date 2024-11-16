@@ -75,5 +75,3 @@ offset_bottom = 576.0
 [node name="HBoxContainer" type="HBoxContainer" parent="DisplayCanvas/HealthDisplay/VBoxContainer"]
 layout_mode = 2
 alignment = 2
-
-[connection signal="HealthDepleted" from="Health" to="." method="queue_free"]

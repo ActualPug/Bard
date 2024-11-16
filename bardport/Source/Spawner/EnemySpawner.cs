@@ -31,7 +31,7 @@ public partial class EnemySpawner : Node2D, ISpawner
         CharacterBody2D instance;
         long enemy;
 
-        if (rng.Randf() > SpawnChance)
+        if (rng.Randf() > SpawnChance || GetTree().Paused)
         {
             GetTree().CreateTimer(SpawnRate).Timeout += SpawnEntity;
             return;

@@ -15,6 +15,8 @@ public partial class CharacterController : Node
     public DamageArea Area { get; set; }
     [Export]
     public uint Score { get; set; } = 1;
+    [Export]
+    public AudioStreamPlayer2D DeathSFX { get; set; }
 
     private PathingAgent _pathingInput;
     private string _curAnim = "idle";
@@ -50,6 +52,8 @@ public partial class CharacterController : Node
 
     public void OnDeath()
     {
+        DeathSFX.Reparent(GetParent().GetParent());
+        DeathSFX.Play();
         ScoreBoard.Score += Score;
         GetParent().QueueFree();
     }

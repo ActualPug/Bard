@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://dabhyjd1q4656"]
 
-[ext_resource type="AudioStream" uid="uid://drfphc28koipu" path="res://Music/04 Tiger King.mp3" id="1_jb0o2"]
+[ext_resource type="AudioStream" uid="uid://drfphc28koipu" path="res://Audio/Music/04 Tiger King.mp3" id="1_jb0o2"]
 [ext_resource type="Script" path="res://Source/UI/MainMenu.cs" id="1_ogd0g"]
 [ext_resource type="PackedScene" uid="uid://cknlliwus7seo" path="res://main.tscn" id="2_48873"]
 [ext_resource type="TileSet" uid="uid://csrny3km0xxot" path="res://TileSets/map_tileset.tres" id="3_ahtw0"]
@@ -46,9 +46,10 @@ text = "Settings"
 layout_mode = 2
 text = "Quit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_jb0o2")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/StartGame" to="." method="StartGame"]

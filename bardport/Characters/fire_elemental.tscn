@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhpjesdelgl0o"]
+[gd_scene load_steps=10 format=3 uid="uid://bhpjesdelgl0o"]
 
 [ext_resource type="SpriteFrames" uid="uid://dc5562873m4ia" path="res://Sprites/Characters/FireElemental/fire_elemental_frames.tres" id="1_bbwwj"]
 [ext_resource type="Script" path="res://Source/KinematicCharacter.cs" id="1_d146t"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Source/Controllers/CharacterController.cs" id="2_adt67"]
 [ext_resource type="Script" path="res://Source/Pathing/PathingAgent.cs" id="3_ceq7q"]
 [ext_resource type="Script" path="res://Source/DamageArea.cs" id="6_n62h5"]
+[ext_resource type="AudioStream" uid="uid://cehy5y7xpoatt" path="res://Audio/SFX/fire-extinguish.mp3" id="7_rljwa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7jvk"]
 size = Vector2(16, 16)
@@ -30,12 +31,13 @@ position = Vector2(0, -8)
 sprite_frames = ExtResource("1_bbwwj")
 animation = &"walking"
 
-[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("CharacterBody", "CharacterSprite", "ChracterHealth", "Area")]
+[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("CharacterBody", "CharacterSprite", "ChracterHealth", "Area", "DeathSFX")]
 script = ExtResource("2_adt67")
 CharacterBody = NodePath("..")
 CharacterSprite = NodePath("../Sprite")
 ChracterHealth = NodePath("../Health")
 Area = NodePath("../DamageArea")
+DeathSFX = NodePath("../DeathSFX")
 
 [node name="PathingAgentInput" type="Node2D" parent="Controller"]
 script = ExtResource("3_ceq7q")
@@ -46,3 +48,7 @@ script = ExtResource("6_n62h5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 shape = SubResource("RectangleShape2D_0co3x")
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_rljwa")
+bus = &"SoundEffects"

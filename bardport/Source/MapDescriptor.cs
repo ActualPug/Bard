@@ -8,6 +8,8 @@ public partial class MapDescriptor : Node2D
     [Export]
     public KinematicCharacter Player { get; set; }
     [Export]
+    public Vector2 PlayerSpawnPoint { get; set; } = Vector2.Zero;
+    [Export]
     public EnemyManager Manager { get; set; }
     [Export]
     public uint ScoreNeeded { get; set; } = 10;

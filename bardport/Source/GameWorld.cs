@@ -4,9 +4,13 @@ using System;
 
 public partial class GameWorld : SubViewport
 {
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		
-	}
+    [Export]
+    public KinematicCharacter Player { get; set; }
+	[Export]
+	public MapDescriptor CurrentMap { get; set; }
+
+    public override void _Ready()
+    {
+        Player.Position = CurrentMap.PlayerSpawnPoint;
+    }
 }
